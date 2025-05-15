@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+    overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+.container {
+    background: rgba(15, 15, 20, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+    border-bottom: 1px solid #00ff00;
+    padding-bottom: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #00ff00;
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(30, 30, 35, 0.8);
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00ff00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+button {
+    position: relative;
+    background: #444;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    letter-spacing: 0.1rem;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    transition: 0.2s;
+    cursor: pointer;
+    flex: 1;
+    max-width: 200px;
+}
+
+button:hover {
+    letter-spacing: 0.2rem;
+    padding: 1.1rem 2.1rem;
+    background: var(--clr);
+    color: var(--clr);
+    animation: box 3s infinite;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: #272822;
+}
+
+button span {
+    position: relative;
+    z-index: 1;
+}
+
+button i {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+button i::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    left: 80%;
+    top: -2px;
+    border: 2px solid var(--clr);
+    background: #272822;
+    transition: 0.2s;
+}
+
+button:hover i::before {
+    width: 15px;
+    left: 20%;
+    animation: move 3s infinite;
+}
+
+button i::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    left: 20%;
+    bottom: -2px;
+    border: 2px solid var(--clr);
+    background: #272822;
+    transition: 0.2s;
+}
+
+button:hover i::after {
+    width: 15px;
+    left: 80%;
+    animation: move 3s infinite;
+}
+
+.result-container {
+    background: rgba(20, 20, 25, 0.8);
+    padding: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid #00ff00;
+    margin-top: 1rem;
+}
+
+#calculation-steps {
+    margin: 1rem 0;
+    line-height: 1.8;
+}
+
+.step {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.step:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #00ff00;
+}
+
+#final-result {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(0, 255, 0, 0.1);
+    border-left: 3px solid #00ff00;
+    font-size: 1.3rem;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+@keyframes move {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes box {
+    0% { box-shadow: none; }
+    50% { box-shadow: 0 0 25px var(--clr); }
+    100% { box-shadow: none; }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; text-shadow: 0 0 5px #00ff00; }
+    100% { opacity: 0.8; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+        width: 95%;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    button {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    button:hover {
+        padding: 0.9rem 1.6rem;
+    }
+    
+    .step {
+        font-size: 1rem;
+    }
+    
+    #final-result {
+        font-size: 1.1rem;
+    }
+}
